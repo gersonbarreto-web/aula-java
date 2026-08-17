@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Atv7 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe a cor do CD : ");
+        String cor = sc.nextLine();
+
+        if (cor.equalsIgnoreCase("verde")) {
+            System.out.println("10");
+        } else if (cor.equalsIgnoreCase("azul")) {
+            System.out.println("20");
+        } else if (cor.equalsIgnoreCase("amarelo")) {
+            System.out.println("30");
+        } else if (cor.equalsIgnoreCase("vermelho")) {
+            System.out.println("40");
+        } else {
+            System.out.println("Cor inválida");
+        }
+
+        sc.close();
+
+
+    }
+}

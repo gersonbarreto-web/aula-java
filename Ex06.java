@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Atv5 {
+public class Ex06 {
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
         System.out.println("informe o numero: ");
@@ -16,5 +16,3 @@ public class Atv5 {
         sc.close();
     }
 }
-
-

@@ -1,18 +1,17 @@
-import java.util.Scanner;
-
 public class Atv4 {
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        
+       
+        for (int numero = 1; numero <= 10; numero++) {
+            System.out.println("=== TABUADA DO " + numero + " ===");
+            
+            
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(numero + " x " + i + " = " + (numero * i));
+            }
+            
+            System.out.println(); 
+        }
 
-        System.out.println("informe sua idade : ");
-        int idade = sc.nextInt();
-
-        if (idade >=18) {
-            System.out.println("maior de idade");
-        } else {
-            System.out.println("menor de idade");
-        }   
-        sc.close();     
     }
 }

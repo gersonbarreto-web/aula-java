@@ -1,23 +1,15 @@
-import java.util.Scanner;
-
 public class Atv3 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+       
+        for (int i = 1; i <= 100; i++) {
 
-        System.out.println("informa a idade :");
-        int idade = sc.nextInt();
+            if (i <= 51 && i % 2 != 0) {
+                System.out.println("O numero impar e: " + i);
+            } 
+            else if (i >= 52 && i % 2 == 0) {
+                System.out.println("O numero par e: " + i);
+            }
 
-        if (idade <=12) {
-            System.out.println("crianca");
-        } else if (idade<18 ) {
-            System.out.println("adolescente");
-        } else if (idade<60 ) {
-            System.out.println("adulto");
-        } else {
-            System.out.println("idoso");
         }
-        sc.close();
     }
 }
-
-

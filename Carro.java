@@ -1,38 +1,16 @@
-package ORINTADA_OBJETO_JAVA;
 
-class Carro {
-    private String marca;
-    private String modelo;
-    private int anofabricacao;
+public class Carro extends Veiculo {
+    private int qtdPortas;
 
-    // Construtor adicionado aqui:
-    public Carro(String marca, String modelo, int anofabricacao) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anofabricacao = anofabricacao;
+    public Carro(String marca, int ano, int qtdPortas) {
+        super(marca, ano);
+        this.qtdPortas = qtdPortas;
     }
 
-    public int getAnofabricacao() {
-        return anofabricacao;
-    }
-
-    public void setAnofabricacao(int anofabricacao) {
-        this.anofabricacao = anofabricacao;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    @Override
+    public void exibirInfo() {
+        System.out.println("=== Informações do Carro ===");
+        super.exibirInfo();
+        System.out.println("Quantidade de Portas: " + qtdPortas + "\n");
     }
 }

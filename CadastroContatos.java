@@ -1,105 +1,130 @@
+package ATVSistema;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CadastroContatos {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        ArrayList<Contato> contatos = new ArrayList<>();
+        ArrayList<Contato1> contatos = new ArrayList<>();
 
         while (true) {
-            System.out.println("Sistema de cadastro de contatos");
-            
-            System.out.println("1. Cadastrar contato");
-            System.out.println("2. Listar contatos");
-            System.out.println("3. Remover contato");
-            System.out.println("4. Alterar contato");
-            System.out.println("5. Pesquisar contato");
-            System.out.println("6. Sair");
-            System.out.print("Opção: ");
-            int op = sc.nextInt();
-            sc.nextLine(); // Limpar buffer
+            System.out.println("\n========= AGENDA DE CONTATOS =========");
+            System.out.println("1 - Cadastrar contato pessoal");
+            System.out.println("2 - Cadastrar contato profissional");
+            System.out.println("3 - Listar todos os contatos");
+            System.out.println("4 - Pesquisar contato");
+            System.out.println("5 - Alterar contato");
+            System.out.println("6 - Excluir contato");
+            System.out.println("7 - Sair");
+            System.out.print("Escolha uma opção: ");
 
-            switch (op) {
+            int opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao) {
                 case 1:
-                    System.out.print("Digite o nome do contato: ");
-                    String nome = sc.nextLine();
-                    
-                    System.out.print("Digite o número do contato: ");
-                    String numero = sc.nextLine();
-                    
-                    contatos.add(new Contato(nome, numero));
-                    System.out.println("Contato cadastrado com sucesso!");
-                    
+                    System.out.print("Nome: ");
+                    String nomeP = sc.nextLine();
+                    System.out.print("Telefone: ");
+                    String numP = sc.nextLine();
+                    System.out.print("Parentesco: ");
+                    String parentesco = sc.nextLine();
+                    contatos.add(new ContatoPessoal(nomeP, numP, parentesco));
+                    System.out.println("Contato pessoal cadastrado com sucesso!");
                     break;
 
                 case 2:
-                    System.out.println("Nomes cadastrados:");
-                    for (int i = 0; i < contatos.size(); i++) {
-                        System.out.println((i + 1) + ". " + contatos.get(i));
-                    }
+                    System.out.print("Nome: ");
+                    String nomePr = sc.nextLine();
+                    System.out.print("Telefone: ");
+                    String numPr = sc.nextLine();
+                    System.out.print("Empresa: ");
+                    String empresa = sc.nextLine();
+                    System.out.print("Cargo: ");
+                    String cargo = sc.nextLine();
+                    contatos.add(new ContatoProfissional(nomePr, numPr, empresa, cargo));
+                    System.out.println("Contato profissional cadastrado com sucesso!");
                     break;
 
                 case 3:
-                    System.out.println("Informe o indice do contato para remover:");
-                    int index = sc.nextInt();
-                    sc.nextLine();
-
-                    if (index > 0 && index <= contatos.size()) {
-                        contatos.remove(index - 1);
-                        System.out.println("Contato removido com sucesso!");
+                    if (contatos.isEmpty()) {
+                        System.out.println("Nenhum contato cadastrado.");
                     } else {
-                        System.out.println("Índice inválido.");
+                        System.out.println("\n--- Lista de Contatos ---");
+                        for (int i = 0; i < contatos.size(); i++) {
+                            System.out.println((i + 1) + " - " + contatos.get(i).exibirDados());
+                            System.out.println("-------------------------");
+                        }
                     }
                     break;
 
                 case 4:
-                    System.out.println("Informe o numero do contato para alterar:");
-                    int pos = sc.nextInt();
-                    sc.nextLine();
-
-                    if (pos > 0 && pos <= contatos.size()) {
-                        System.out.print("Digite o novo nome do contato: ");
-                        String novoNome = sc.nextLine();
-                        
-                        System.out.print("Digite o novo número do contato: ");
-                        String novoNumero = sc.nextLine();
-                        
-                        contatos.get(pos - 1).setNome(novoNome);
-                        contatos.get(pos - 1).setNumero(novoNumero);
-                        
-                        System.out.println("Contato alterado com sucesso!");
-                    } else {
-                        System.out.println("Índice inválido.");
-                    }
-                    break;
-
-                case 5:
-                    System.out.println("Informe o nome do contato para pesquisar:");
+                    System.out.print("Digite o nome para pesquisar: ");
                     String busca = sc.nextLine();
-                    
                     boolean encontrado = false;
-
-                    for (int i = 0; i < contatos.size(); i++) {
-                        if (contatos.get(i).getNome().equalsIgnoreCase(busca)) {
-                            System.out.println("Contato encontrado: " + contatos.get(i));
+                    for (Contato1 c : contatos) {
+                        if (c.getNome().equalsIgnoreCase(busca)) {
+                            System.out.println("\nContato encontrado!");
+                            System.out.println(c.exibirDados());
                             encontrado = true;
                         }
                     }
-
                     if (!encontrado) {
                         System.out.println("Contato não encontrado.");
                     }
                     break;
 
+                case 5:
+                    if (contatos.isEmpty()) {
+                        System.out.println("Lista vazia.");
+                        break;
+                    }
+                    for (int i = 0; i < contatos.size(); i++) {
+                        System.out.println((i + 1) + " - " + contatos.get(i).getNome());
+                    }
+                    System.out.print("Informe o número do contato que deseja alterar: ");
+                    int idxAlt = sc.nextInt();
+                    sc.nextLine();
+
+                    if (idxAlt > 0 && idxAlt <= contatos.size()) {
+                        System.out.print("Novo Nome: ");
+                        contatos.get(idxAlt - 1).setNome(sc.nextLine());
+                        System.out.print("Novo Telefone: ");
+                        contatos.get(idxAlt - 1).setNumero(sc.nextLine());
+                        System.out.println("Contato alterado com sucesso!");
+                    } else {
+                        System.out.println("Contato inválido!");
+                    }
+                    break;
+
                 case 6:
+                    if (contatos.isEmpty()) {
+                        System.out.println("Lista vazia.");
+                        break;
+                    }
+                    for (int i = 0; i < contatos.size(); i++) {
+                        System.out.println((i + 1) + " - " + contatos.get(i).getNome());
+                    }
+                    System.out.print("Informe o número do contato que deseja excluir: ");
+                    int idxExc = sc.nextInt();
+                    sc.nextLine();
+
+                    if (idxExc > 0 && idxExc <= contatos.size()) {
+                        contatos.remove(idxExc - 1);
+                        System.out.println("Contato excluído com sucesso!");
+                    } else {
+                        System.out.println("Contato inválido!");
+                    }
+                    break;
+
+                case 7:
                     System.out.println("Saindo do sistema...");
                     sc.close();
                     return;
 
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("Opção inválida!");
                     break;
             }
         }

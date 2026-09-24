@@ -2,6 +2,8 @@
 
 import java.util.Scanner;
 
+import D2.Carro;
+
 public class CarroApp {
     public static void main(String[] args) {
         

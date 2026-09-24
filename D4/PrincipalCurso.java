@@ -64,7 +64,7 @@ public class PrincipalCurso {
                         curso = new CursoPresencial(codigo, nomeCurso, cargaHoraria, valor, sala, turno);
                         System.out.println("Curso Presencial cadastrado com sucesso!");
                     } else {
-                        System.out.print("Digite o endereço da plataforma (ex: https://plataforma.com): ");
+                        System.out.print("Digite o endereço da plataforma  ");
                         String plataforma = scanner.nextLine();
 
                         System.out.print("Digite o código de acesso: ");

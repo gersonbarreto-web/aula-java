@@ -1,6 +1,9 @@
 
 import java.util.Scanner;
 
+import D2.Carro;
+import D2.Moto;
+
 public class VeiculoApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

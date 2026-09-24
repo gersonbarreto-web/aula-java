@@ -42,8 +42,7 @@ public class PrincipalProduto {
 
                     System.out.print("Digite o código do produto: ");
                     int codigo = scanner.nextInt();
-                    scanner.nextLine(); // Limpar buffer
-
+                    scanner.nextLine(); 
                     System.out.print("Digite o nome do produto: ");
                     String nome = scanner.nextLine();
 
@@ -59,7 +58,7 @@ public class PrincipalProduto {
                         produto = new ProdutoDigital(codigo, nome, preco);
                         System.out.println("Produto Digital cadastrado com sucesso!");
                     }
-                    vendaCalculada = false; // Reseta o estado da última venda calculada
+                    vendaCalculada = false; 
                     break;
 
                 case 3:
